@@ -1,10 +1,4 @@
-const jwt = require('jsonwebtoken')
-const icloud_sod = require('icloud-sod')
-const getPassport = require('../config/getPassport')
-
-const auth = (() => {
-  getPassport();
-})();
+const jwt = require('jsonwebtoken');
 
 module.exports = function (req, res, next) {
   // Get token from header
@@ -17,7 +11,7 @@ module.exports = function (req, res, next) {
 
   // Verify token
   try {
-    jwt.verify(token, "hello", (error, decoded) => {
+    jwt.verify(token, 'hello', (error, decoded) => {
       if (error) {
         return res.status(401).json({ msg: 'Token is not valid' });
       } else {
